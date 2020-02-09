@@ -1,5 +1,6 @@
 package com.template_sb_gwt.ui.client.widgets.menu_set;
 
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.core.client.util.Margins;
@@ -11,16 +12,12 @@ import java.util.List;
 
 public class AccordionMenuPanel implements IsWidget {
     private static final int HEAD_WIDTH = 50;
-    private final List<Widget> menuItems = new ArrayList<>();
+    private final List<MenuItem> menuItems = new ArrayList<>();
     private ContentPanel panel;
     private VerticalLayoutContainer menuContainer;
 
-    public AccordionMenuPanel() {
-    }
-
-    public void addMenuItem(Widget item) {
-        if (menuContainer != null)
-            menuItems.add(item);
+    public void addMenuItem(MenuItem item) {
+        menuItems.add(item);
     }
 
     @Override
@@ -29,8 +26,8 @@ public class AccordionMenuPanel implements IsWidget {
             panel = new ContentPanel();
             menuContainer = new VerticalLayoutContainer();
 
-            for (Widget w : menuItems) {
-                menuContainer.add(w, new VerticalLayoutContainer.VerticalLayoutData(1, -1, new Margins(2, 0, 0, 0)));
+            for (MenuItem item : menuItems) {
+                menuContainer.add(item, new VerticalLayoutContainer.VerticalLayoutData(1, -1, new Margins(2, 0, 0, 0)));
             }
 
             panel.setHeading("MyApp");

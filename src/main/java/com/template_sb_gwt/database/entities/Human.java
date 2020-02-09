@@ -1,12 +1,16 @@
-package com.template_sb_gwt.ui.shared.entities;
+package com.template_sb_gwt.database.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import java.io.Serializable;
 
 @Entity
+@Table(name = "Humans")
 public class Human implements Serializable {
     @Id
+    @GeneratedValue
     private Long id;
 
     private String name;
@@ -19,6 +23,14 @@ public class Human implements Serializable {
 
     public Human() {
     }
+
+    public Human(String name, String surname, String gender, String country) {
+        this.name = name;
+        this.surname = surname;
+        this.gender = gender;
+        this.country = country;
+    }
+
 
     public Long getId() {
         return id;
